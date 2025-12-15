@@ -1,0 +1,54 @@
+Students=[]
+@staticmethod
+def add_student():
+     name =input("Enter Student name: ")
+     f_name =input("Enter Father name: ")
+     Class=input("Enter Class name: ")
+     roll_no=input("Enter your roll_no: ")
+
+     student = {
+        "name": name,
+        "f_name": f_name,
+        "Class" : Class,
+        "roll_no": roll_no
+     }
+     Students.append(student)
+     print("Sudent add successfully..\n")
+
+@staticmethod
+def show_students():
+     num = input("Enter your registered roll number : ")
+
+     for i in Students:
+         if num == i["roll_no"]:
+             print(f"Student name: {i['name']} | Father name: {i['f_name']} | Class: {i['Class']}")
+
+@staticmethod
+def remove_students():
+    num = input("Enter roll number: ")
+    for i in Students:
+        if num == i["roll_no"]:
+         Students.remove(i)
+         print("Student removed")
+        else:
+         print("Wrong input")
+
+@staticmethod
+def update_student():
+        num = input("Enter roll number: ")
+        for i in Students:
+            if num == i["roll_no"]:
+             i["name"] =input("Enter new name: ")
+             i["f_name"] =input("Enter new Father name: ")
+             i["Class"] =input("Enter new Class name: ")
+             print("Updated")
+            else:
+                print("wrong input")
+
+@staticmethod
+def all_students():
+    for i in Students:
+       print(f"Student name: {i['name']} | Father name: {i['f_name']} | Class: {i['Class']} | Roll_no. {i['roll_no']}")
+
+
+
