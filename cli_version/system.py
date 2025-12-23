@@ -1,5 +1,4 @@
 Students=[]
-@staticmethod
 def add_student():
      name =input("Enter Student name: ")
      f_name =input("Enter Father name: ")
