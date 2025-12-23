@@ -15,7 +15,7 @@ def add_student():
      Students.append(student)
      print("Sudent add successfully..\n")
 
-@staticmethod
+
 def show_students():
      num = input("Enter your registered roll number : ")
 
@@ -23,7 +23,7 @@ def show_students():
          if num == i["roll_no"]:
              print(f"Student name: {i['name']} | Father name: {i['f_name']} | Class: {i['Class']}")
 
-@staticmethod
+
 def remove_students():
     num = input("Enter roll number: ")
     for i in Students:
@@ -33,7 +33,7 @@ def remove_students():
         else:
          print("Wrong input")
 
-@staticmethod
+
 def update_student():
         num = input("Enter roll number: ")
         for i in Students:
@@ -45,7 +45,7 @@ def update_student():
             else:
                 print("wrong input")
 
-@staticmethod
+
 def all_students():
     for i in Students:
        print(f"Student name: {i['name']} | Father name: {i['f_name']} | Class: {i['Class']} | Roll_no. {i['roll_no']}")
