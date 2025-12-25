@@ -12,7 +12,7 @@ def add_student():
         "roll_no": roll_no
      }
      Students.append(student)
-     print("Sudent add successfully..\n")
+     print("\nStudent add successfully..\n")
 
 
 def show_students():
@@ -20,7 +20,7 @@ def show_students():
 
      for i in Students:
          if num == i["roll_no"]:
-             print(f"Student name: {i['name']} | Father name: {i['f_name']} | Class: {i['Class']}")
+             print(f"\nStudent name: {i['name']} | Father name: {i['f_name']} | Class: {i['Class']}\n")
 
 
 def remove_students():
@@ -28,7 +28,7 @@ def remove_students():
     for i in Students:
         if num == i["roll_no"]:
          Students.remove(i)
-         print("Student removed")
+         print("\nStudent removed\n")
         else:
          print("Wrong input")
 
@@ -40,7 +40,7 @@ def update_student():
              i["name"] =input("Enter new name: ")
              i["f_name"] =input("Enter new Father name: ")
              i["Class"] =input("Enter new Class name: ")
-             print("Updated")
+             print("\nUpdated\n")
             else:
                 print("wrong input")
 

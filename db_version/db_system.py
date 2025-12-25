@@ -1,17 +1,17 @@
 from database import connection
 
-Students=[]
+
 def add_student():
      name =input("Enter Student name: ")
      f_name =input("Enter Father name: ")
      Class=input("Enter Class name: ")
-     roll_no=input("Enter your roll_no: ")
+     roll_no=int(input("Enter your roll_no: "))
 
      conn = connection()
      cur = conn.cursor()
 
      cur.execute("""
-         INSERT INTO students (roll_no, name, f_name, class_name)
+         INSERT INTO student (roll_no, name, f_name, class_name)
          VALUES (%s, %s, %s, %s)
      """, (roll_no, name, f_name, Class))
 
@@ -23,42 +23,46 @@ def add_student():
      print("Student add successfully..\n")
 
 def show_students():
-     num = input("Enter your registered roll number : ")
+     num = int(input("Enter your registered roll number : "))
 
      conn = connection()
      cur = conn.cursor()
 
-     cur.execute("SELECT name, f_name, class_name FROM students WHERE roll_no = %s", (num,))
+     cur.execute("SELECT name, f_name, class_name FROM student WHERE roll_no = %s", (num,))
      student = cur.fetchone()
 
      cur.close()
      conn.close()
-     if num == student["roll_no"]:
-             print(f"Student name: {student['name']} | Father name: {student['f_name']} | Class: {student['Class']}")
+     if student:
+             print(f"\nStudent name: {student[0]} | Father name: {student[1]} | Class: {student[2]}\n")
+     else:
+         print("\nStudent not found\n")
 
 
 def remove_students():
-    num = input("Enter roll number: ")
+    num = int(input("Enter roll number: "))
     conn = connection()
     cur = conn.cursor()
 
-    cur.execute("DELETE FROM students WHERE roll_no = %s", (num,))
+    cur.execute("DELETE FROM student WHERE roll_no = %s", (num,))
     conn.commit()
     if cur.rowcount > 0:
-     print("Student removed")
+     print("\nStudent removed\n")
     else:
-     print("Wrong input")
+     print("\nWrong input\n")
 
+    cur.close()
+    conn.close()
 
 def update_student():
-    num = input("Enter roll number: ")
+    num = int(input("Enter roll number: "))
 
     conn = connection()
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM students WHERE roll_no = %s", (num,))
+    cur.execute("SELECT * FROM student WHERE roll_no = %s", (num,))
     if not cur.fetchone():
-        print("Roll number not found.")
+        print("\nRoll number not found.\n")
         cur.close()
         conn.close()
         return
@@ -68,27 +72,27 @@ def update_student():
     class_name = input("Enter new Class name: ")
 
     cur.execute("""
-        UPDATE students SET name=%s, f_name=%s, class_name=%s WHERE roll_no=%s
+        UPDATE student SET name=%s, f_name=%s, class_name=%s WHERE roll_no=%s
     """, (name, f_name, class_name, num))
 
     conn.commit()
     cur.close()
     conn.close()
-    print("Updated successfully!")
+    print("\nUpdated successfully!\n")
 
 
 def all_students():
     conn = connection()
     cur = conn.cursor()
 
-    cur.execute("SELECT name, f_name, class_name, roll_no FROM students")
+    cur.execute("SELECT name, f_name, class_name, roll_no FROM student")
     rows = cur.fetchall()
 
     cur.close()
     conn.close()
 
     for i in rows:
-        print(f"Student name: {i[0]} | Father name: {i[1]} | Class: {i[2]} | Roll_no: {i[3]}")
+        print(f"\nStudent name: {i[0]} | Father name: {i[1]} | Class: {i[2]} | Roll_no: {i[3]}\n")
 
 
 

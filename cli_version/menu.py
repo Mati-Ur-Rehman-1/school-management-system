@@ -1,7 +1,7 @@
 from system import add_student, show_students,remove_students,update_student,all_students
 print("\nwelcome to School management System\n")
 while True:
-        print("1. For Add new Student\n2. For Show student \n3. For remove Student \n4. For update Student\n5. For all data")
+        print("1. For Add new Student\n2. For Show student \n3. For remove Student \n4. For update Student\n5. For all data\n6. For exit")
         choice = input("Enter your choice: ")
         if choice == "1":
              add_student()
@@ -13,6 +13,8 @@ while True:
             update_student()
         elif choice == "5":
             all_students()
+        elif choice == "6":
+            break
         else:
             print("wrong input")
             break
