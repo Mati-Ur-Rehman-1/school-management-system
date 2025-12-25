@@ -20,7 +20,7 @@ def add_student():
      conn.close()
 
 
-     print("Student add successfully..\n")
+     print("\nStudent added successfully..\n")
 
 def show_students():
      num = int(input("Enter your registered roll number : "))
